@@ -38,7 +38,7 @@ public class MovieListViewHolder extends RecyclerView.ViewHolder implements Movi
 
     @Override
     public void setCoverImage(String imageURL){
-        Picasso.with(itemView.getContext()).load(imageURL).memoryPolicy(MemoryPolicy.NO_CACHE).into(coverImageImageView);
+        Picasso.with(itemView.getContext()).load(imageURL).into(coverImageImageView);
     }
 
     @Override

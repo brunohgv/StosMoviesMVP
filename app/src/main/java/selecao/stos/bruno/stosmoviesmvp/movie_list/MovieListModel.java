@@ -7,6 +7,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import selecao.stos.bruno.stosmoviesmvp.api.ApiClient;
+import selecao.stos.bruno.stosmoviesmvp.api.ApiInterface;
 import selecao.stos.bruno.stosmoviesmvp.data.entities.Movie;
 
 public class MovieListModel implements MovieListContract.Model {

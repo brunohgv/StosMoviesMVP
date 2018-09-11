@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -21,6 +23,8 @@ public class MovieListActivity extends AppCompatActivity implements MovieListCon
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +32,15 @@ public class MovieListActivity extends AppCompatActivity implements MovieListCon
 
         presenter = new MovieListPresenter(this);
 
+        progressBar = findViewById(R.id.movie_list_progress_bar);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_list);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+
         presenter.fetchData();
-        setDataToRecyclerView();
+//        setDataToRecyclerView();
     }
 
     @Override
@@ -52,6 +59,16 @@ public class MovieListActivity extends AppCompatActivity implements MovieListCon
     @Override
     public void onResponseFailure(Throwable t) {
         Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
     }
 
 }

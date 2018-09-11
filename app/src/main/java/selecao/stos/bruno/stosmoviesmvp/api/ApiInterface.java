@@ -1,4 +1,4 @@
-package selecao.stos.bruno.stosmoviesmvp.movie_list;
+package selecao.stos.bruno.stosmoviesmvp.api;
 
 import java.util.List;
 

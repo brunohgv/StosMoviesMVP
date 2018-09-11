@@ -8,7 +8,6 @@ import selecao.stos.bruno.stosmoviesmvp.data.entities.Movie;
 public class MovieListPresenter implements MovieListContract.Presenter, MovieListContract.Model.OnFinishedListener{
 
     private List<Movie> movieList;
-    private static MovieListPresenter instance;
     private MovieListContract.Model model;
     private MovieListContract.View view;
 
@@ -39,6 +38,7 @@ public class MovieListPresenter implements MovieListContract.Presenter, MovieLis
 
     @Override
     public void fetchData() {
+        view.showProgress();
         model.getMovieList(this);
     }
 
@@ -46,10 +46,12 @@ public class MovieListPresenter implements MovieListContract.Presenter, MovieLis
     public void onFinished(List<Movie> movieArrayList) {
         movieList.addAll(movieArrayList);
         view.setDataToRecyclerView();
+        view.hideProgress();
     }
 
     @Override
     public void onFailure(Throwable t) {
+        view.hideProgress();
         view.onResponseFailure(t);
     }
 }

@@ -17,6 +17,8 @@ public interface MovieListContract {
         void navigateToMovieDetail(int movieId);
         void setDataToRecyclerView();
         void onResponseFailure(Throwable t);
+        void showProgress();
+        void hideProgress();
     }
     interface Presenter {
         void onBindMovieListRowViewAtPosition(RowView rowView, int position);
