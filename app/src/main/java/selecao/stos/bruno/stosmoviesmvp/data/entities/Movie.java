@@ -1,11 +1,20 @@
 package selecao.stos.bruno.stosmoviesmvp.data.entities;
 
-public class Movie {
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class Movie implements Serializable{
+
+    @SerializedName("id")
     private int id;
+    @SerializedName("titulo")
     private String title;
+    @SerializedName("descricao")
     private String description;
+    @SerializedName("capa")
     private String imageCover;
+    @SerializedName("url_imagem")
     private String imageURL;
 
     public Movie(int id, String title, String description, String imageCover, String imageURL) {
